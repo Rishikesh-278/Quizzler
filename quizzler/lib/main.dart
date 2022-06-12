@@ -45,8 +45,6 @@ class _QuizPageState extends State<QuizPage> {
 
   // Question q1 = Question(q: 'You can lead a cow down stairs but not up stairs.', a: false);
 
-
-
   int QuestionNumber = 0;
 
   @override
@@ -61,7 +59,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questionBank[QuestionNumber].questionText,
+                quizBrain.getQuestionText(QuestionNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -86,7 +84,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
 
-                bool correctAnswer = quizBrain.questionBank[QuestionNumber].questionAnswer;
+                bool correctAnswer = quizBrain.getCorrectAnswer(QuestionNumber);
 
                 if(correctAnswer == true)
                   {
@@ -118,7 +116,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
 
-                bool correctAnswer = quizBrain.questionBank[QuestionNumber].questionAnswer ;
+                bool correctAnswer = quizBrain.getCorrectAnswer(QuestionNumber);
 
                 if(correctAnswer == false)
                 {

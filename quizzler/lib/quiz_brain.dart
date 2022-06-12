@@ -2,11 +2,10 @@ import 'package:quizzler/question.dart';
 
 class QuizBrain
 {
-  List <Question> questionBank = [
+  List <Question> _questionBank = [
     Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
     Question(q: 'Approximately one quarter of human bones are in the feet.', a: true),
     Question(q: 'A slug\'s blood is green.', a: true),
-
     Question(q: 'Some cats are actually allergic to humans',a: true),
     Question(q:'You can lead a cow down stairs but not up stairs.',a: false),
     Question(q: 'Approximately one quarter of human bones are in the feet.',a: true),
@@ -20,6 +19,15 @@ class QuizBrain
     Question(q: 'Google was originally called \"Backrub\".',a: true),
     Question(q: 'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.', a: true),
     Question(q: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.', a: true),
-
   ];
+
+  String getQuestionText(int questionNumber)
+  {
+    return _questionBank[questionNumber].questionText;
+  }
+
+  bool getCorrectAnswer(int questionNumber)
+  {
+    return _questionBank[questionNumber].questionAnswer;
+  }
 }
