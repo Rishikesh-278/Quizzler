@@ -45,7 +45,7 @@ class _QuizPageState extends State<QuizPage> {
 
   // Question q1 = Question(q: 'You can lead a cow down stairs but not up stairs.', a: false);
 
-  int QuestionNumber = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.getQuestionText(QuestionNumber),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -84,7 +84,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
 
-                bool correctAnswer = quizBrain.getCorrectAnswer(QuestionNumber);
+                bool correctAnswer = quizBrain.getCorrectAnswer();
 
                 if(correctAnswer == true)
                   {
@@ -96,7 +96,7 @@ class _QuizPageState extends State<QuizPage> {
                   }
 
                 setState( () {
-                  QuestionNumber++;
+                  quizBrain.nextQuestion();
                 });
               },
             ),
@@ -116,7 +116,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
 
-                bool correctAnswer = quizBrain.getCorrectAnswer(QuestionNumber);
+                bool correctAnswer = quizBrain.getCorrectAnswer();
 
                 if(correctAnswer == false)
                 {
@@ -128,7 +128,7 @@ class _QuizPageState extends State<QuizPage> {
                 }
 
                 setState(() {
-                  QuestionNumber++;
+                  quizBrain.nextQuestion();
                 });
                 //The user picked false.
               },

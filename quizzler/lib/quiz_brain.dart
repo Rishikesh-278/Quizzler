@@ -2,7 +2,10 @@ import 'package:quizzler/question.dart';
 
 class QuizBrain
 {
-  List <Question> _questionBank = [
+
+  int _QuestionNumber = 0;
+
+  final List <Question> _questionBank = [
     Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
     Question(q: 'Approximately one quarter of human bones are in the feet.', a: true),
     Question(q: 'A slug\'s blood is green.', a: true),
@@ -21,13 +24,23 @@ class QuizBrain
     Question(q: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.', a: true),
   ];
 
-  String getQuestionText(int questionNumber)
+  void nextQuestion()
   {
-    return _questionBank[questionNumber].questionText;
+    if(_QuestionNumber < _questionBank.length - 1)
+      {
+        _QuestionNumber++;
+      }
+    print(_QuestionNumber);
+    print(_questionBank.length);
   }
 
-  bool getCorrectAnswer(int questionNumber)
+  String getQuestionText()
   {
-    return _questionBank[questionNumber].questionAnswer;
+    return _questionBank[_QuestionNumber].questionText;
+  }
+
+  bool getCorrectAnswer()
+  {
+    return _questionBank[_QuestionNumber].questionAnswer;
   }
 }
