@@ -45,8 +45,6 @@ class _QuizPageState extends State<QuizPage> {
 
   // Question q1 = Question(q: 'You can lead a cow down stairs but not up stairs.', a: false);
 
-
-
   @override
   Widget build(BuildContext context) {
     return Column(
