@@ -1,4 +1,3 @@
-import 'package:quizzler/question.dart';
 
 class Question
 {
