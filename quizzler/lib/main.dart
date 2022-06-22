@@ -31,18 +31,23 @@ class _QuizPageState extends State<QuizPage> {
 
   List <Icon> scoreKeeper = [];
 
-  /*
 
-  List <String> Questions = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
-  ];
+  void checkAnswer(bool userPickedAnswer)
+  {
+    bool correctAnswer = quizBrain.getCorrectAnswer();
 
-  List <bool> answers = [false, true, true];
-
-   */
-
+    setState( () {
+    if(userPickedAnswer == correctAnswer)
+    {
+      scoreKeeper.add(Icon(Icons.check, color: Colors.green,));
+    }
+    else
+    {
+      scoreKeeper.add(Icon(Icons.close, color: Colors.red,));
+    }
+      quizBrain.nextQuestion();
+    });
+  }
   // Question q1 = Question(q: 'You can lead a cow down stairs but not up stairs.', a: false);
 
   @override
@@ -81,21 +86,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-
-                bool correctAnswer = quizBrain.getCorrectAnswer();
-
-                if(correctAnswer == true)
-                  {
-                    print("user got it right");
-                  }
-                else
-                  {
-                    print("use got it wrong");
-                  }
-
-                setState( () {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -113,22 +104,8 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-
-                bool correctAnswer = quizBrain.getCorrectAnswer();
-
-                if(correctAnswer == false)
-                {
-                  print("user got it right");
-                }
-                else
-                {
-                  print("use got it wrong");
-                }
-
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
                 //The user picked false.
+                checkAnswer(false);
               },
             ),
           ),
